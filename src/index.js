@@ -12,9 +12,23 @@ const root = ReactDOM.createRoot(rootEl);
 
 // 4) Create as component
 function App() {
+    let message = 'Bye there!';
+    if (Math.random() > 0.5) {
+        message = 'Hi there!';
+    }
+    const someNumber = 1234;
+    const someBoolean = true;
+    const someArray = [1, 2, 3];
+    const someObject = {
+        foo: "foo",
+        bar: "bar"
+    };
     return <>
-        <h1>Hi there!</h1>
-        <p>Some aditional text</p>
+        <h1>{message}</h1>
+        <p>Some number: {someNumber}</p>
+        <p>Some boolean: {someBoolean}</p>
+        <p>Some array: {someArray}</p>
+        {/* <p>Some object: {someObject}</p> */}
     </>;
 }
 
