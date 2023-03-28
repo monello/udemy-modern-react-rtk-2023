@@ -29,6 +29,7 @@ function App() {
         <p>Some boolean: {someBoolean}</p>
         <p>Some array: {someArray}</p>
         {/* <p>Some object: {someObject}</p> */}
+        <p>Time: {new Date().toLocaleTimeString()}</p>
     </>;
 }
 
