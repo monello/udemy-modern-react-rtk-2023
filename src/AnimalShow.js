@@ -7,6 +7,7 @@ import fish from './svg/fish.svg';
 import gator from './svg/gator.svg';
 import horse from './svg/horse.svg';
 import heart from './svg/heart.svg';
+import './AnimalShow.css';
 
 const svgMap = { bird, cat, cow, dog, fish, gator, horse };
 
@@ -16,9 +17,10 @@ function AnimalShow({ type }) {
     const handleClick = () => {
         setClicks(clicks + 1);
     };
-    return <div>
-        <img alt="animal" src={svgMap[type]} />
+    return <div className='animal-show '>
+        <img className='animal' alt="animal" src={svgMap[type]} />
         <img
+            className='heart'
             alt="likes"
             src={heart} style={{ width: 10 + 10 * clicks + 'px' }}
             onClick={handleClick}
