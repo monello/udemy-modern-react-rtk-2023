@@ -1,8 +1,16 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ onSubmit }) => {
+    const handleClick = () => {
+        const term = document.getElementById('term').value;
+        onSubmit(term);
+    };
+
     return (
-        <div>SearchBar</div>
+        <div>
+            <input type='text' id='term' />
+            <button onClick={handleClick}>Search</button>
+        </div>
     );
 };
 
