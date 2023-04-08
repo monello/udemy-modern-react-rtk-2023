@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BookCreate from './components/BookCreate';
-import Examples from './Examples';
 
 export const App = () => {
     const [books, setBooks] = useState([]);
@@ -20,7 +19,6 @@ export const App = () => {
             <div>Books App</div>
             {!!books.length && <><h1>Books</h1><ul>{booksList}</ul></>}
             <BookCreate onCreate={createBook} />
-            <Examples />
         </>
     );
 };
