@@ -7,12 +7,15 @@ export const App = () => {
     const createBook = (title) => {
         const updatedBooks = [
             ...books,
-            title
+            {
+                id: Math.floor(Math.random() * 99999),
+                title
+            }
         ];
         setBooks(updatedBooks);
     };
 
-    const booksList = books.map((book, index) => <li key={index}>{book}</li>);
+    const booksList = books.map(({ id, title }) => <li key={id}>({id}) - {title}</li>);
 
     return (
         <>
