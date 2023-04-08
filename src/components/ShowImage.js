@@ -1,8 +1,11 @@
 import React from 'react';
 
-const ShowImage = () => {
+const ShowImage = ({ image }) => {
+    const { alt_description, urls } = image;
     return (
-        <div>ShowImage</div>
+        <div>
+            <img alt={alt_description} src={urls.small} />
+        </div>
     );
 };
 

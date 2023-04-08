@@ -1,13 +1,11 @@
 import React from 'react';
 import ShowImage from './ShowImage';
 
-const ImageList = () => {
+const ImageList = ({ images }) => {
+    const renderedImages = images.map(image => <ShowImage key={image.id} image={image} />);
     return (
         <>
-            <ShowImage />
-            <ShowImage />
-            <ShowImage />
-            <ShowImage />
+            {!!images.length && renderedImages}
         </>
     );
 };
