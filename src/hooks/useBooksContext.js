@@ -10,10 +10,17 @@ const useBooksContext = () => {
         setBooks(response.data);
     };
 
+    const deleteBookById = async (id) => {
+        await axios.delete(`http://localhost:3500/books/${id}`);
+        const updatedBooks = books.filter(book => book.id !== id);
+        setBooks(updatedBooks);
+    };
+
     return {
         books,
         setBooks,
-        fetchBooks
+        fetchBooks,
+        deleteBookById
     };
 };
 
