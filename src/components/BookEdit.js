@@ -1,7 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import BooksContext from '../context/books';
 
 const BookEdit = ({ book, onSubmit }) => {
+    const { books, setBooks } = useContext(BooksContext);
     const [title, setTitle] = useState(book.title);
+
+    const editBookById = async (id, newTitle) => {
+        const response = await axios.put(`http://localhost:3500/books/${id}`, {
+            title: newTitle
+        });
+
+        const updatedBooks = books.map(book => {
+            if (book.id === id) {
+                return {
+                    ...book,
+                    ...response.data
+                };
+            }
+            return book;
+        });
+        setBooks(updatedBooks);
+    };
 
     const onChange = (event) => {
         setTitle(event.target.value);
@@ -9,7 +29,8 @@ const BookEdit = ({ book, onSubmit }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(book.id, title);
+        onSubmit();
+        editBookById(book.id, title);
         setTitle('');
     };
 
