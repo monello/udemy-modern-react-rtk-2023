@@ -28,8 +28,9 @@ export const App = () => {
         setBooks(updatedBooks);
     };
 
-    const deleteBookById = (id) => {
-        console.log("TARGET ID:", id);
+    const deleteBookById = async (id) => {
+        await axios.delete(`http://localhost:3500/books/${id}`);
+
         const updatedBooks = books.filter(book => book.id !== id);
         setBooks(updatedBooks);
     };
