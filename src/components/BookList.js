@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import BooksContext from '../context/books';
 import BookShow from './BookShow';
 
-const BookList = ({ onEdit }) => {
+const BookList = () => {
     const { books, setBooks } = useContext(BooksContext);
 
     useEffect(() => {
@@ -19,7 +19,6 @@ const BookList = ({ onEdit }) => {
     const renderedBooks = books.map(book => <BookShow
         key={book.id}
         book={book}
-        onEdit={onEdit}
     />);
     return (
         <div className='book-list'>

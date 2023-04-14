@@ -3,7 +3,7 @@ import axios from 'axios';
 import BooksContext from '../context/books';
 import BookEdit from './BookEdit';
 
-const BookShow = ({ book, onEdit }) => {
+const BookShow = ({ book }) => {
     const { books, setBooks } = useContext(BooksContext);
     const [showEdit, setShowEdit] = useState(false);
 
@@ -11,6 +11,23 @@ const BookShow = ({ book, onEdit }) => {
         await axios.delete(`http://localhost:3500/books/${id}`);
 
         const updatedBooks = books.filter(book => book.id !== id);
+        setBooks(updatedBooks);
+    };
+
+    const editBookById = async (id, newTitle) => {
+        const response = await axios.put(`http://localhost:3500/books/${id}`, {
+            title: newTitle
+        });
+
+        const updatedBooks = books.map(book => {
+            if (book.id === id) {
+                return {
+                    ...book,
+                    ...response.data
+                };
+            }
+            return book;
+        });
         setBooks(updatedBooks);
     };
 
@@ -24,7 +41,7 @@ const BookShow = ({ book, onEdit }) => {
 
     const handleSubmit = (id, title) => {
         setShowEdit(false);
-        onEdit(id, title);
+        editBookById(id, title);
     };
 
     let content = <h3>{book.title}</h3>;
