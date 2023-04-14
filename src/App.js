@@ -16,19 +16,6 @@ export const App = () => {
         setBooks(response.data);
     };
 
-    const createBook = async (title) => {
-        const response = await axios.post(
-            'http://localhost:3500/books',
-            { title }
-        );
-
-        const updatedBooks = [
-            ...books,
-            response.data
-        ];
-        setBooks(updatedBooks);
-    };
-
     const deleteBookById = async (id) => {
         await axios.delete(`http://localhost:3500/books/${id}`);
 
@@ -57,7 +44,7 @@ export const App = () => {
         <div className='app'>
             <h1>Reading List</h1>
             <BookList books={books} onDelete={deleteBookById} onEdit={editBookById} />
-            <BookCreate onCreate={createBook} />
+            <BookCreate />
         </div>
     );
 };

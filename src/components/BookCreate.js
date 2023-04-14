@@ -1,7 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import axios from 'axios';
+import BooksContext from '../context/books';
 
-const BookCreate = ({ onCreate }) => {
+const BookCreate = () => {
+    const { books, setBooks } = useContext(BooksContext);
     const [title, setTitle] = useState('');
+
+    const createBook = async (title) => {
+        const response = await axios.post(
+            'http://localhost:3500/books',
+            { title }
+        );
+
+        const updatedBooks = [
+            ...books,
+            response.data
+        ];
+        setBooks(updatedBooks);
+    };
 
     const handleChange = (event) => {
         setTitle(event.target.value);
@@ -9,7 +25,7 @@ const BookCreate = ({ onCreate }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onCreate(title);
+        createBook(title);
         setTitle('');
     };
     return (
