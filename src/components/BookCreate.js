@@ -1,23 +1,9 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import useBooksContext from '../hooks/useBooksContext';
 
 const BookCreate = () => {
-    const { books, setBooks } = useBooksContext();
+    const { createBook } = useBooksContext();
     const [title, setTitle] = useState('');
-
-    const createBook = async (title) => {
-        const response = await axios.post(
-            'http://localhost:3500/books',
-            { title }
-        );
-
-        const updatedBooks = [
-            ...books,
-            response.data
-        ];
-        setBooks(updatedBooks);
-    };
 
     const handleChange = (event) => {
         setTitle(event.target.value);

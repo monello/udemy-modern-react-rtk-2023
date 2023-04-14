@@ -5,6 +5,19 @@ import BooksContext from '../context/books';
 const useBooksContext = () => {
     const { books, setBooks } = useContext(BooksContext);
 
+    const createBook = async (title) => {
+        const response = await axios.post(
+            'http://localhost:3500/books',
+            { title }
+        );
+
+        const updatedBooks = [
+            ...books,
+            response.data
+        ];
+        setBooks(updatedBooks);
+    };
+
     const fetchBooks = async () => {
         const response = await axios.get("http://localhost:3500/books");
         setBooks(response.data);
@@ -36,6 +49,7 @@ const useBooksContext = () => {
     return {
         books,
         setBooks,
+        createBook,
         fetchBooks,
         deleteBookById,
         editBookById
