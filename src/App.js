@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
+import BooksContext from './context/books';
 import BookCreate from './components/BookCreate';
 import BookList from './components/BookList';
 
 export const App = () => {
-    const [books, setBooks] = useState([]);
+    const { books, setBooks } = useContext(BooksContext);
 
     useEffect(() => {
         fetchBooks();

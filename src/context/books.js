@@ -1,9 +1,10 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 
 const BooksContext = createContext();
 
 function Provider({ children }) {
-    const valueToShare = {};
+    const [books, setBooks] = useState([]);
+    const valueToShare = { books, setBooks };
 
     return <BooksContext.Provider value={valueToShare}>
         {children}
