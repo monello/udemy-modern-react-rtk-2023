@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-import { useContext } from 'react';
-import BooksContext from '../context/books';
+import useBooksContext from '../hooks/useBooksContext';
 import BookShow from './BookShow';
 
 const BookList = () => {
-    const { books, setBooks } = useContext(BooksContext);
+    const { books, setBooks } = useBooksContext();
 
     useEffect(() => {
         fetchBooks();

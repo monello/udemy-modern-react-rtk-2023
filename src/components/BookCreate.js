@@ -1,9 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import BooksContext from '../context/books';
+import useBooksContext from '../hooks/useBooksContext';
 
 const BookCreate = () => {
-    const { books, setBooks } = useContext(BooksContext);
+    const { books, setBooks } = useBooksContext();
     const [title, setTitle] = useState('');
 
     const createBook = async (title) => {

@@ -1,15 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import BooksContext from '../context/books';
+import useBooksContext from '../hooks/useBooksContext';
 import BookEdit from './BookEdit';
 
 const BookShow = ({ book }) => {
-    const { books, setBooks } = useContext(BooksContext);
+    const { books, setBooks } = useBooksContext();
     const [showEdit, setShowEdit] = useState(false);
 
     const deleteBookById = async (id) => {
         await axios.delete(`http://localhost:3500/books/${id}`);
-
         const updatedBooks = books.filter(book => book.id !== id);
         setBooks(updatedBooks);
     };
