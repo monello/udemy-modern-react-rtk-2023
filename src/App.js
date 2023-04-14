@@ -7,13 +7,6 @@ import BookList from './components/BookList';
 export const App = () => {
     const { books, setBooks } = useContext(BooksContext);
 
-    const deleteBookById = async (id) => {
-        await axios.delete(`http://localhost:3500/books/${id}`);
-
-        const updatedBooks = books.filter(book => book.id !== id);
-        setBooks(updatedBooks);
-    };
-
     const editBookById = async (id, newTitle) => {
         const response = await axios.put(`http://localhost:3500/books/${id}`, {
             title: newTitle
@@ -34,7 +27,7 @@ export const App = () => {
     return (
         <div className='app'>
             <h1>Reading List</h1>
-            <BookList onDelete={deleteBookById} onEdit={editBookById} />
+            <BookList onEdit={editBookById} />
             <BookCreate />
         </div>
     );
