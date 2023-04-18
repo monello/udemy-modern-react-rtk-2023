@@ -1,4 +1,5 @@
 import React from "react";
+import { GoBell, GoCloudDownload, GoDatabase } from "react-icons/go";
 import Button from "./Button";
 
 const App = () => {
@@ -8,13 +9,21 @@ const App = () => {
                 Variations
             </h1>
             <div>
-                <Button>Default</Button>
+                <Button>
+                    <GoBell className="mr-1" />
+                    Default with Icon
+                </Button>
             </div>
             <div>
-                <Button primary>Primary</Button>
+                <Button primary>
+                    <GoCloudDownload /> Primary with Icon
+                </Button>
             </div>
             <div>
-                <Button secondary>Secondary</Button>
+                <Button secondary>
+                    <GoDatabase />
+                    Secondary with Icon
+                </Button>
             </div>
             <div>
                 <Button success>Success</Button>
