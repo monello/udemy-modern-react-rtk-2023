@@ -3,13 +3,16 @@ import { GoBell, GoCloudDownload, GoDatabase } from "react-icons/go";
 import Button from "./Button";
 
 const App = () => {
+    const handleClick = () => {
+        console.log("Click!!!");
+    };
     return (
         <div>
             <h1 className="text-lg font-bold leading-10 underline">
                 Variations
             </h1>
             <div>
-                <Button>
+                <Button onClick={handleClick}>
                     <GoBell className="mr-1" />
                     Default with Icon
                 </Button>
