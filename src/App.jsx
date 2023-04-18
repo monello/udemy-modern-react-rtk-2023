@@ -18,7 +18,7 @@ const App = () => {
                 </Button>
             </div>
             <div>
-                <Button primary>
+                <Button className="mb-5" primary>
                     <GoCloudDownload /> Primary with Icon
                 </Button>
             </div>
