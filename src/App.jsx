@@ -5,7 +5,7 @@ const App = () => {
     return (
         <div>
             <div>
-                <Button>Button Text</Button>
+                <Button primary>Button Text</Button>
             </div>
         </div>
     );
