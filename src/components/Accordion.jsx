@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Accordion = ({ items }) => {
-    const tabs = items.map((item) => (
-        <div key={item.id}>
-            <div>{item.label}</div>
-            <div>{item.content}</div>
-        </div>
-    ));
+    const [expandedTab, setExpendedTab] = useState(0);
+
+    const tabs = items.map((item, index) => {
+        const isExpanded = index === expandedTab;
+
+        return (
+            <div key={item.id}>
+                <div>
+                    {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
+                </div>
+                <div>{item.content}</div>
+            </div>
+        );
+    });
     return <div>{tabs}</div>;
 };
 
