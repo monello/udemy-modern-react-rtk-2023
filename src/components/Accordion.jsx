@@ -6,9 +6,13 @@ const Accordion = ({ items }) => {
     const tabs = items.map((item, index) => {
         const isExpanded = index === expandedTab;
 
+        const handleClick = () => {
+            setExpendedTab(index);
+        };
+
         return (
             <div key={item.id}>
-                <div onClick={() => setExpendedTab(index)}>
+                <div onClick={handleClick}>
                     {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
                 </div>
                 {isExpanded && <div>{item.content}</div>}
