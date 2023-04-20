@@ -11,10 +11,11 @@ const Accordion = ({ items }) => {
                 <div>
                     {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
                 </div>
-                <div>{item.content}</div>
+                {isExpanded && <div>{item.content}</div>}
             </div>
         );
     });
+
     return <div>{tabs}</div>;
 };
 
