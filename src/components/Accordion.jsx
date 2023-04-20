@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 const Accordion = ({ items }) => {
-    const [expandedTab, setExpandedTab] = useState(0);
+    const [expandedTab, setExpandedTab] = useState(-1);
 
     const handleClick = (targetTabIndex) => {
-        setExpandedTab(targetTabIndex);
+        setExpandedTab(expandedTab === targetTabIndex ? -1 : targetTabIndex);
     };
 
     const tabs = items.map((item, index) => {
