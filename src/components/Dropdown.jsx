@@ -18,11 +18,9 @@ const Dropdown = ({ options, selection, onSelect }) => {
         </div>
     ));
 
-    const content = selection ? selection.label : "Select ...";
-
     return (
         <div>
-            <div onClick={handleClick}>{content}</div>
+            <div onClick={handleClick}>{selection?.label || "Select ..."}</div>
             {isOpen && <div>{optionElements}</div>}
         </div>
     );
