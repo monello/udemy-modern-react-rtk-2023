@@ -3,16 +3,16 @@ import React, { useState } from "react";
 const Accordion = ({ items }) => {
     const [expandedTab, setExpendedTab] = useState(0);
 
+    const handleClick = (targetTabIndex) => {
+        setExpendedTab(targetTabIndex);
+    };
+
     const tabs = items.map((item, index) => {
         const isExpanded = index === expandedTab;
 
-        const handleClick = () => {
-            setExpendedTab(index);
-        };
-
         return (
             <div key={item.id}>
-                <div onClick={handleClick}>
+                <div onClick={() => handleClick(index)}>
                     {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
                 </div>
                 {isExpanded && <div>{item.content}</div>}
