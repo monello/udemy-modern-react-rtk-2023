@@ -11,7 +11,9 @@ const Accordion = ({ items }) => {
     const tabs = items.map((item, index) => {
         const isExpanded = index === expandedTab;
         const icon = (
-            <span>{isExpanded ? <GoChevronDown /> : <GoChevronLeft />}</span>
+            <span className="text-2xl">
+                {isExpanded ? <GoChevronDown /> : <GoChevronLeft />}
+            </span>
         );
         return (
             <div key={item.id}>
