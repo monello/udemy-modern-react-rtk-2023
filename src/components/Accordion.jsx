@@ -1,19 +1,23 @@
 import React, { useState } from "react";
+import { GoChevronDown, GoChevronLeft } from "react-icons/go";
 
 const Accordion = ({ items }) => {
-    const [expandedTab, setExpendedTab] = useState(0);
+    const [expandedTab, setExpandedTab] = useState(0);
 
     const handleClick = (targetTabIndex) => {
-        setExpendedTab(targetTabIndex);
+        setExpandedTab(targetTabIndex);
     };
 
     const tabs = items.map((item, index) => {
         const isExpanded = index === expandedTab;
-
+        const icon = (
+            <span>{isExpanded ? <GoChevronDown /> : <GoChevronLeft />}</span>
+        );
         return (
             <div key={item.id}>
                 <div onClick={() => handleClick(index)}>
-                    {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
+                    {icon}
+                    {item.label}
                 </div>
                 {isExpanded && <div>{item.content}</div>}
             </div>
