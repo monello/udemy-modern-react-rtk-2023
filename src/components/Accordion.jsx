@@ -8,7 +8,7 @@ const Accordion = ({ items }) => {
 
         return (
             <div key={item.id}>
-                <div>
+                <div onClick={() => setExpendedTab(index)}>
                     {item.label} {isExpanded ? "EXPANDED!" : "COLLAPSED"}
                 </div>
                 {isExpanded && <div>{item.content}</div>}
