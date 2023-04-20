@@ -15,16 +15,21 @@ const Accordion = ({ items }) => {
         );
         return (
             <div key={item.id}>
-                <div onClick={() => handleClick(index)}>
+                <div
+                    className="flex p-3 bg-gray-50 border-b items-center cursor-pointer"
+                    onClick={() => handleClick(index)}
+                >
                     {icon}
                     {item.label}
                 </div>
-                {isExpanded && <div>{item.content}</div>}
+                {isExpanded && (
+                    <div className="border-b p-5">{item.content}</div>
+                )}
             </div>
         );
     });
 
-    return <div>{tabs}</div>;
+    return <div className="border-x border-t rounded">{tabs}</div>;
 };
 
 export default Accordion;
