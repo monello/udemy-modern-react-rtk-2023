@@ -1,13 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GoChevronDown } from "react-icons/go";
 import Panel from "./Panel";
 
 const Dropdown = ({ options, value, onChange }) => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const divEl = useRef();
+
     useEffect(() => {
         const handler = (event) => {
-            console.log(event.target);
+            // check that the diff is still in the DOM, if not then just return, no point on wasting time to carry om
+            if (!divEl.current) {
+                return;
+            }
+
+            // check if the user clicked on an element that is withiin the Dropdown component DOM tree
+            // If it is then the user clicked something that is pat of the Dropdown, so NOT Click-Outside
+            // If not, then we need to close the dropdown
+            if (!divEl.current.contains(event.target)) {
+                setIsOpen(false);
+            }
         };
 
         document.addEventListener("click", handler, true);
@@ -39,7 +51,7 @@ const Dropdown = ({ options, value, onChange }) => {
     ));
 
     return (
-        <div className="w-48 relative">
+        <div ref={divEl} className="w-48 relative">
             <Panel
                 className="flex justify-between items-center cursor-pointer"
                 onClick={handleClick}
