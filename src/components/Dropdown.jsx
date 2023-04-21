@@ -11,6 +11,12 @@ const Dropdown = ({ options, value, onChange }) => {
         };
 
         document.addEventListener("click", handler, true);
+
+        // CLEAN-UP function
+        // Seeing as this useEffect has no dependencies in the array, this function will only run when the component is removed from the DOM
+        return () => {
+            document.removeEventListener("click", handler);
+        };
     }, []);
 
     const handleClick = () => {
