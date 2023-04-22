@@ -1,8 +1,7 @@
 import React from "react";
-import DropdownPage from "./pages/DropdownPage";
 
 const App = () => {
-    return <DropdownPage />;
+    return <div></div>;
 };
 
 export default App;
