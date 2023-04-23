@@ -14,12 +14,25 @@ const ModalPage = () => {
         setShowModal(false);
     };
 
+    const actionBar = (
+        <div>
+            <Button primary onClick={onCloseHandler}>
+                Accept
+            </Button>
+        </div>
+    );
+    const modal = (
+        <Modal onClose={onCloseHandler} actionBar={actionBar}>
+            Here are some important Term &amp; Conditions to accept.
+        </Modal>
+    );
+
     return (
         <div>
             <Button primary onClick={buttonClickHandler}>
                 Open Modal
             </Button>
-            {showModal && <Modal onClose={onCloseHandler} />}
+            {showModal && modal}
         </div>
     );
 };
