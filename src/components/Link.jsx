@@ -2,8 +2,8 @@ import React from "react";
 import classNames from "classnames";
 import useNavigation from "../hooks/useNavigation";
 
-const Link = ({ to, children }) => {
-    const { navigate } = useNavigation();
+const Link = ({ to, children, className, activeClassName }) => {
+    const { navigate, currentPath } = useNavigation();
     const handleClick = (event) => {
         // if the use explicitly forces "Open in New Tab" using Ctrl + click (Windows) or Cmd + click (MacOS),
         // the we don't want to preventDefault
@@ -16,7 +16,11 @@ const Link = ({ to, children }) => {
         navigate(to);
     };
 
-    const classes = classNames("text-blue-500");
+    const classes = classNames(
+        "text-blue-500",
+        className,
+        to === currentPath && activeClassName
+    );
     return (
         <a className={classes} href={to} onClick={handleClick}>
             {children}
