@@ -3,6 +3,121 @@ import Modal from "../components/Modal";
 import Button from "../components/Button";
 import { useState } from "react";
 
+const fakeContent = (
+    <div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            sem quam, tincidunt in magna vel, bibendum condimentum erat. Aliquam
+            erat volutpat. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae; Suspendisse pellentesque quam nec
+            turpis porta ultrices. Aenean tincidunt lacus vel nisi tempus
+            semper. Proin condimentum risus sed purus sollicitudin, aliquam
+            semper turpis lobortis. Integer malesuada gravida leo, non dapibus
+            arcu sollicitudin a.
+        </p>
+        <br />
+    </div>
+);
+
 const ModalPage = () => {
     const [showModal, setShowModal] = useState(false);
 
@@ -32,6 +147,7 @@ const ModalPage = () => {
             <Button primary onClick={buttonClickHandler}>
                 Open Modal
             </Button>
+            {fakeContent}
             {showModal && modal}
         </div>
     );
