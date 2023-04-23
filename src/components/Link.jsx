@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import classNames from "classnames";
-import NavigationContext from "../context/navigation";
+import useNavigation from "../hooks/useNavigation";
 
 const Link = ({ to, children }) => {
-    const { navigate } = useContext(NavigationContext);
+    const { navigate } = useNavigation();
     const handleClick = (event) => {
         // if the use explicitly forces "Open in New Tab" using Ctrl + click (Windows) or Cmd + click (MacOS),
         // the we don't want to preventDefault
