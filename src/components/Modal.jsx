@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 
 const Modal = ({ onClose, children, actionBar }) => {
+    useEffect(() => {
+        // when the modal is rendered, we stop the page from being scrollable, by setting the <body> tag to "overflow: hidden"
+        document.body.classList.add("overflow-hidden");
+        // this is a cleanup function
+        // when the modal is removed (or rerendered) this function will run and restore th scrollability of the page (<html> tag)
+        return () => {
+            document.body.classList.remove("overflow-hidden");
+        };
+    }, []);
     return ReactDOM.createPortal(
         <div>
             <div
