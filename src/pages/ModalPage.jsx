@@ -6,16 +6,20 @@ import { useState } from "react";
 const ModalPage = () => {
     const [showModal, setShowModal] = useState(false);
 
-    const handleButtonClick = () => {
+    const buttonClickHandler = () => {
         setShowModal(true);
+    };
+
+    const onCloseHandler = () => {
+        setShowModal(false);
     };
 
     return (
         <div>
-            <Button primary onClick={handleButtonClick}>
+            <Button primary onClick={buttonClickHandler}>
                 Open Modal
             </Button>
-            {showModal && <Modal />}
+            {showModal && <Modal onClose={onCloseHandler} />}
         </div>
     );
 };
