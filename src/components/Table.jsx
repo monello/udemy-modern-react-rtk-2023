@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ data, config }) => {
+const Table = ({ data, config, keyFn }) => {
     const renderedHeaders = config.map((column) => (
         <th key={column.label}>{column.label}</th>
     ));
@@ -12,7 +12,7 @@ const Table = ({ data, config }) => {
             </td>
         ));
         return (
-            <tr key={rowData.name} className="border-b">
+            <tr key={keyFn(rowData)} className="border-b">
                 {renderedCells}
             </tr>
         );

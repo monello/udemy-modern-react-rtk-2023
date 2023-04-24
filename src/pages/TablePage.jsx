@@ -23,10 +23,12 @@ const config = [
     },
 ];
 
+const keyFn = (fruit) => fruit.name;
+
 const TablePage = () => {
     return (
         <div>
-            <Table data={data} config={config} />
+            <Table data={data} config={config} keyFn={keyFn} />
         </div>
     );
 };
