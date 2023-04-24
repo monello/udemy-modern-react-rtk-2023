@@ -5,14 +5,14 @@ const Table = ({ data, config }) => {
         <th key={column.label}>{column.label}</th>
     ));
 
-    const renderedRows = data.map((fruit) => {
+    const renderedRows = data.map((rowData) => {
         const renderedCells = config.map((column) => (
             <td key={column.label} className="p-3">
-                {column.render(fruit)}
+                {column.render(rowData)}
             </td>
         ));
         return (
-            <tr key={fruit.name} className="border-b">
+            <tr key={rowData.name} className="border-b">
                 {renderedCells}
             </tr>
         );
