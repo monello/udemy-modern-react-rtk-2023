@@ -11,7 +11,7 @@ const data = [
 const config = [
     {
         label: "Name",
-        render: (fruit) => fruit.name.lenght,
+        render: (fruit) => fruit.name,
     },
     {
         label: "Color",
@@ -22,6 +22,7 @@ const config = [
         render: (fruit) => fruit.score,
     },
 ];
+
 const TablePage = () => {
     return (
         <div>
