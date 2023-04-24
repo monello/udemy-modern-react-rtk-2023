@@ -11,11 +11,11 @@ const data = [
 const config = [
     {
         label: "Name",
-        render: (fruit) => fruit.name,
+        render: (fruit) => fruit.name.lenght,
     },
     {
         label: "Color",
-        render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`}></div>,
+        render: (fruit) => <div className={`p-3 m-2 ${fruit.color}`} />,
     },
     {
         label: "Score",

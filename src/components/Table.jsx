@@ -5,13 +5,18 @@ const Table = ({ data, config }) => {
         <th key={column.label}>{column.label}</th>
     ));
 
-    const renderedRows = data.map((fruit) => (
-        <tr key={fruit.name} className="border-b">
-            <td className="p-3">{config[0].render(fruit)}</td>
-            <td className="p-3">{config[1].render(fruit)}</td>
-            <td className="p-3">{config[2].render(fruit)}</td>
-        </tr>
-    ));
+    const renderedRows = data.map((fruit) => {
+        const renderedCells = config.map((column) => (
+            <td key={column.label} className="p-3">
+                {column.render(fruit)}
+            </td>
+        ));
+        return (
+            <tr key={fruit.name} className="border-b">
+                {renderedCells}
+            </tr>
+        );
+    });
 
     return (
         <table className="table-auto border-spacing-2">
