@@ -1,6 +1,6 @@
 import React from "react";
 
-const Table = ({ data }) => {
+const Table = ({ data, config }) => {
     const renderedRows = data.map((fruit) => (
         <tr key={fruit.name} className="border-b">
             <td className="p-3">{fruit.name}</td>
@@ -11,14 +11,12 @@ const Table = ({ data }) => {
         </tr>
     ));
 
+    const renderedHeaders = config.map((item) => <th>{item.label}</th>);
+
     return (
         <table className="table-auto border-spacing-2">
             <thead>
-                <tr className="border-b-2">
-                    <th>Fruit</th>
-                    <th>Color</th>
-                    <th>Score</th>
-                </tr>
+                <tr className="border-b-2">{renderedHeaders}</tr>
             </thead>
             <tbody>{renderedRows}</tbody>
         </table>
