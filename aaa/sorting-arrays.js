@@ -64,3 +64,26 @@ console.log(strings.sort());
 console.log(strings.sort((a, b) => {
     return a.localeCompare(b);
 }));
+
+
+const objects = [
+    { name: 'Tomato', cost: 10, weight: 5 },
+    { name: 'Carrot', cost: 15, weight: 2 },
+    { name: 'Onion', cost: 5, weight: 7 },
+];
+
+function getSortValue(vegetable) {
+    return vegetable.cost;
+}
+
+console.log("ASCENDING by cost:", objects.sort((a, b) => {
+    const valueA = getSortValue(a);
+    const valueB = getSortValue(b);
+    return valueA - valueB;
+}));
+
+console.log("DESCENDING by cost:", objects.sort((a, b) => {
+    const valueA = getSortValue(a);
+    const valueB = getSortValue(b);
+    return (valueA - valueB) * -1;
+}));
