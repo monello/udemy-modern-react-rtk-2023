@@ -9,6 +9,13 @@ const SortableTable = (props) => {
     const [sortBy, setSortBy] = useState(null);
 
     const handleClick = (label) => {
+        // If the use switched to another column, reset to ASC
+        if (sortOrder && label !== sortBy) {
+            setSortOrder("asc");
+            setSortBy(label);
+            return;
+        }
+        // Same column sort-order cycling
         if (sortOrder === null) {
             setSortOrder("asc");
             setSortBy(label);
