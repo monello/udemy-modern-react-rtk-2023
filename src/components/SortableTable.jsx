@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./Table";
 
 const SortableTable = (props) => {
     const { config } = props;
 
+    const [sortOrder, setSortOrder] = useState(null);
+    const [sortBy, setSortBy] = useState(null);
+
     const handleClick = (label) => {
-        console.log(`Label: ${label}`);
+        if (sortOrder === null) {
+            setSortOrder("asc");
+            setSortBy(label);
+        } else if (sortOrder === "asc") {
+            setSortOrder("desc");
+            setSortBy(label);
+        } else {
+            setSortOrder(null);
+            setSortBy(null);
+        }
     };
 
     const updatedConfig = config.map((column) => {
@@ -14,7 +26,7 @@ const SortableTable = (props) => {
             ...column,
             header: () => (
                 <th onClick={() => handleClick(column.label)}>
-                    {column.label} [^v]
+                    {column.label} [{column.label === sortBy && sortOrder}]
                 </th>
             ),
         };
