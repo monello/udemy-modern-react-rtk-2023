@@ -58,3 +58,9 @@ BUBBLE SORT
 // const sorted3 = data2.sort();
 // console.log(sorted3);
 
+const strings = ['t', 'A', 'a', 'B', 'b'];
+
+console.log(strings.sort());
+console.log(strings.sort((a, b) => {
+    return a.localeCompare(b);
+}));
