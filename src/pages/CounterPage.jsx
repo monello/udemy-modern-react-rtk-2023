@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
-import { useCounter } from "../hooks/useCounter";
+import useCounter from "../hooks/useCounter";
 
 const CounterPage = ({ initialCount }) => {
     const { count, increment } = useCounter(initialCount);
