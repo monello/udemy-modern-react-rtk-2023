@@ -8,6 +8,7 @@ const SideBar = () => {
         { label: "Button", to: "/button" },
         { label: "Modal", to: "/modal" },
         { label: "Table", to: "/table" },
+        { label: "Counter", to: "/counter" },
     ];
 
     const renderedLinks = links.map((link) => {
