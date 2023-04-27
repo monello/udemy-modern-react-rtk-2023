@@ -4,6 +4,7 @@ import Panel from "../components/Panel";
 
 const INCREMENT = "increment";
 const DECREMENT = "dencrement";
+const ADD_VALUE = "add-value";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -16,6 +17,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 count: state.count - 1,
+            };
+        case ADD_VALUE:
+            return {
+                ...state,
+                valueToAdd: action.payload,
             };
         default:
             return state;
@@ -46,7 +52,10 @@ const CounterPage = ({ initialCount }) => {
         // const value = parseInt(event.target.value) || 0;
         // const value = Number(event.target.value);
         const value = +event.target.value;
-        // setValueToAdd(value);
+        dispatch({
+            type: ADD_VALUE,
+            payload: value,
+        });
     };
 
     const handleSubmit = (event) => {
@@ -57,6 +66,7 @@ const CounterPage = ({ initialCount }) => {
 
     return (
         <Panel className="m-3">
+            VALUE TO ADD: {state.valueToAdd}
             <h1 className="text-lg">Count is: {state.count}</h1>
             <div className="flex flex-row">
                 <Button success onClick={increment}>
@@ -66,7 +76,6 @@ const CounterPage = ({ initialCount }) => {
                     Decrement
                 </Button>
             </div>
-
             <form onSubmit={handleSubmit}>
                 <label htmlFor="number">Add a lot!</label>
                 <input
