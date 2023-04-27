@@ -11,28 +11,20 @@ const SUBMIT_ADD_VALUE = "submit-add-value";
 const reducer = (state, action) => {
     switch (action.type) {
         case INCREMENT:
-            return {
-                ...state,
-                count: state.count + 1,
-            };
+            state.count++;
+            return;
         case DECREMENT:
-            return {
-                ...state,
-                count: state.count - 1,
-            };
+            state.count++;
+            return;
         case SET_ADD_VALUE:
-            return {
-                ...state,
-                valueToAdd: action.payload,
-            };
+            state.valueToAdd = action.payload;
+            return;
         case SUBMIT_ADD_VALUE:
-            return {
-                ...state,
-                count: state.count + state.valueToAdd,
-                valueToAdd: 0,
-            };
+            state.count = state.count + state.valueToAdd;
+            state.valueToAdd = 0;
+            return;
         default:
-            return state;
+            return;
     }
 };
 
