@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { produce } from "immer";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
@@ -38,7 +39,7 @@ const reducer = (state, action) => {
 const CounterPage = ({ initialCount }) => {
     // const [count, setCount] = useState(initialCount);
     // const [valueToAdd, setValueToAdd] = useState(0);
-    const [state, dispatch] = useReducer(reducer, {
+    const [state, dispatch] = useReducer(produce(reducer), {
         count: initialCount,
         valueToAdd: 0,
     });
