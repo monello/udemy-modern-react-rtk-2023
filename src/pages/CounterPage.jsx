@@ -4,7 +4,8 @@ import Panel from "../components/Panel";
 
 const INCREMENT = "increment";
 const DECREMENT = "dencrement";
-const ADD_VALUE = "add-value";
+const SET_ADD_VALUE = "set-add-value";
+const SUBMIT_ADD_VALUE = "submit-add-value";
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -18,10 +19,16 @@ const reducer = (state, action) => {
                 ...state,
                 count: state.count - 1,
             };
-        case ADD_VALUE:
+        case SET_ADD_VALUE:
             return {
                 ...state,
                 valueToAdd: action.payload,
+            };
+        case SUBMIT_ADD_VALUE:
+            return {
+                ...state,
+                count: state.count + state.valueToAdd,
+                valueToAdd: 0,
             };
         default:
             return state;
@@ -53,20 +60,18 @@ const CounterPage = ({ initialCount }) => {
         // const value = Number(event.target.value);
         const value = +event.target.value;
         dispatch({
-            type: ADD_VALUE,
+            type: SET_ADD_VALUE,
             payload: value,
         });
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // setCount(count + valueToAdd);
-        // setValueToAdd(0);
+        dispatch({ type: SUBMIT_ADD_VALUE });
     };
 
     return (
         <Panel className="m-3">
-            VALUE TO ADD: {state.valueToAdd}
             <h1 className="text-lg">Count is: {state.count}</h1>
             <div className="flex flex-row">
                 <Button success onClick={increment}>
