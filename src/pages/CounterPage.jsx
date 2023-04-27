@@ -2,11 +2,24 @@ import React, { useReducer } from "react";
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
+const INCREMENT = "increment";
+const DECREMENT = "dencrement";
+
 const reducer = (state, action) => {
-    return {
-        ...state,
-        count: state.count + 1,
-    };
+    switch (action.type) {
+        case INCREMENT:
+            return {
+                ...state,
+                count: state.count + 1,
+            };
+        case DECREMENT:
+            return {
+                ...state,
+                count: state.count - 1,
+            };
+        default:
+            return state;
+    }
 };
 
 const CounterPage = ({ initialCount }) => {
@@ -18,11 +31,15 @@ const CounterPage = ({ initialCount }) => {
     });
     console.log(state);
     const increment = () => {
-        dispatch();
+        dispatch({
+            type: INCREMENT,
+        });
     };
 
     const decrement = () => {
-        // setCount(count + 1);
+        dispatch({
+            type: DECREMENT,
+        });
     };
 
     const handleChange = (event) => {
