@@ -7,6 +7,7 @@ import ButtonPage from "./pages/ButtonPage";
 import ModalPage from "./pages/ModalPage";
 import TablePage from "./pages/TablePage";
 import CounterPage from "./pages/CounterPage";
+import PlayListsPage from "./pages/PlayListsPage";
 
 const App = () => {
     return (
@@ -30,6 +31,9 @@ const App = () => {
                 </Route>
                 <Route path="/counter">
                     <CounterPage initialCount={10} />
+                </Route>
+                <Route path="/playlists">
+                    <PlayListsPage />
                 </Route>
             </div>
         </div>
