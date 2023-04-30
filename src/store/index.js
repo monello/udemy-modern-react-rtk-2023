@@ -31,6 +31,14 @@ const moviesSlice = createSlice({
             const index = state.indexOf(action.payload);
             state.splice(index, 1);
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase('song/reset', (state, action) => {
+            // note that we are listing for a call to the reset action on the SONGS slice due to passing the action type "song/reset".
+            // the state here now refers to SONGS not movies even though this reducer is defined in the
+            // moviesSlice
+            return [];
+        });
     }
 });
 
