@@ -8,7 +8,10 @@ const songsSlice = createSlice({
             state.push(action.payload);
         },
         removeSong(state, action) {
-            //
+            // remember inside a slice the state refers only to the part of the state being managed by this slice
+            // this means state = songs NOT state.songs in this case
+            const index = state.indexOf(action.payload);
+            state.splice(index, 1);
         }
     }
 });
