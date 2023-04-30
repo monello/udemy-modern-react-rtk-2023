@@ -1,14 +1,16 @@
+import { useDispatch } from "react-redux";
+import { songActions } from "../store";
 import { createRandomSong } from "../data";
 import Button from "./Button";
 
 function SongPlaylist() {
+    const dispatch = useDispatch();
     // To Do:
     // Get list of songs
     const songPlaylist = [];
 
     const handleSongAdd = (song) => {
-        // To Do:
-        // Add song to list of songs
+        dispatch(songActions.addSong(song));
     };
     const handleSongRemove = (song) => {
         // To Do:

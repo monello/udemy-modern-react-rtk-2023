@@ -18,3 +18,5 @@ export const store = configureStore({
         songs: songsSlice.reducer
     }
 });
+
+export const songActions = songsSlice.actions;
