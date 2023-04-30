@@ -12,8 +12,12 @@ const songsSlice = createSlice({
             // this means state = songs NOT state.songs in this case
             const index = state.indexOf(action.payload);
             state.splice(index, 1);
+        },
+        reset(state, action) {
+            // you cannot do this: state = [], because this does not mutate the state, it re-assigns it and immer only works when mutating state
+            return [];
         }
-    }
+    },
 });
 
 const moviesSlice = createSlice({
