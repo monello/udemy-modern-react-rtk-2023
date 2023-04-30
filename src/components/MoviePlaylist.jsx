@@ -19,21 +19,18 @@ function MoviePlaylist() {
         return (
             <li key={movie}>
                 {movie}
-                <button
-                    onClick={() => handleMovieRemove(movie)}
-                    className="button is-danger"
-                >
+                <Button danger onClick={() => handleMovieRemove(movie)}>
                     X
-                </button>
+                </Button>
             </li>
         );
     });
 
     return (
-        <div>
+        <div className="content">
             <div className="table-header">
                 <h3 className="text-lg font-bold">Movie Playlist</h3>
-                <div>
+                <div className="buttons">
                     <Button
                         primary
                         onClick={() => handleMovieAdd(createRandomMovie())}
