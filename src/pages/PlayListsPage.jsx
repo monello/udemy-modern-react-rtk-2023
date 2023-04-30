@@ -3,14 +3,10 @@ import Button from "../components/Button";
 import MoviePlaylist from "../components/MoviePlaylist";
 import SongPlaylist from "../components/SongPlaylist";
 import "./styles.css";
-import { useDispatch } from "react-redux";
-import { songActions } from "../store";
 
 const PlayListsPage = () => {
-    const dispatch = useDispatch();
-
     const handleResetClick = () => {
-        dispatch(songActions.reset());
+        //
     };
 
     return (
