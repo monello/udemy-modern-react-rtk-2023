@@ -21,12 +21,9 @@ function SongPlaylist() {
         return (
             <li key={song}>
                 {song}
-                <button
-                    onClick={() => handleSongRemove(song)}
-                    className="button is-danger"
-                >
+                <Button danger onClick={() => handleSongRemove(song)}>
                     X
-                </button>
+                </Button>
             </li>
         );
     });
