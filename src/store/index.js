@@ -33,7 +33,9 @@ const moviesSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
-        builder.addCase('song/reset', (state, action) => {
+        // we could also use "songSlice.actions.reset.toString()", below, because that gives us the extact string we want: 'songs/reset'
+        // However, seeing as this is such an often used pattern RTK allows us to leave off the .toString() as a convenience
+        builder.addCase(songsSlice.actions.reset, (state, action) => {
             // note that we are listing for a call to the reset action on the SONGS slice due to passing the action type "song/reset".
             // the state here now refers to SONGS not movies even though this reducer is defined in the
             // moviesSlice
