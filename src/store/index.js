@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { formReducer, formActions } from "./slices/formSlice";
 import { carsReducer, carsActions } from "./slices/carsSLice";
+import { reset } from "./actions";
 
 const store = configureStore({
     reducer: {
@@ -9,4 +10,4 @@ const store = configureStore({
     }
 });
 
-export { store, formActions, carsActions };
+export { store, formActions, carsActions, reset };
