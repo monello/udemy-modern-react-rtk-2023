@@ -5,7 +5,10 @@ import { carsActions } from "../store";
 const CarList = () => {
     const dispatch = useDispatch();
 
-    const cars = useSelector((state) => state.cars.data);
+    const cars = useSelector(({ cars: { searchTerm, data } }) => {
+        const re = new RegExp(searchTerm, "i");
+        return data.filter((car) => car.name.match(re));
+    });
 
     const handleCarDelete = (car) => {
         dispatch(carsActions.removeCar(car.id));
