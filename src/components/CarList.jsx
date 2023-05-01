@@ -1,17 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { carsActions } from "../store";
 
 const CarList = () => {
+    const dispatch = useDispatch();
+
     const cars = useSelector((state) => state.cars.data);
 
-    const handleCarDelete = () => {
-        // TODO: implementation
+    const handleCarDelete = (car) => {
+        dispatch(carsActions.removeCar(car.id));
     };
 
     const renderedCars = cars.map((car) => (
         <div key={car.id} className="panel">
             <p>
-                {car.name} -${car.cost}
+                {car.name} - ${car.cost}
             </p>
             <button
                 className="button is-danger"
