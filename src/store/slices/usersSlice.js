@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUsers } from '../thunks/fetchUsers';
+import { addUser } from '../thunks/addUser';
 
 const usersSlice = createSlice({
     name: "users",
@@ -13,9 +14,10 @@ const usersSlice = createSlice({
     // AsyncThunks are a good example of actions that will be dispatched but are dfeined outside this slice
     //   pending, fullfilled, rejected
     extraReducers: (builder) => {
+        // FETCH USERS CASES
         // builder.addCase('users/fetch/pending'); can be written as builder.addCase(fetchUsers/pending)
         // RTK adds these properties on for us so we do not have to type the string version manually
-        builder.addCase(fetchUsers.pending, (state, action) => {
+        builder.addCase(fetchUsers.pending, (state) => {
             state.isLoading = true;
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
@@ -27,6 +29,19 @@ const usersSlice = createSlice({
         builder.addCase(fetchUsers.rejected, (state, action) => {
             state.isLoading = false;
             // in the case of a rejected async thunk the error being returned will be assigned to action.error
+            state.error = action.error;
+        });
+
+        // ADD USER CASES
+        builder.addCase(addUser.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(addUser.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.data.push(action.payload);
+        });
+        builder.addCase(addUser.rejected, (state, action) => {
+            state.isLoading = false;
             state.error = action.error;
         });
     }
