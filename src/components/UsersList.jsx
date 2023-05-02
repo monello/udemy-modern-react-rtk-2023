@@ -6,7 +6,7 @@ import Skeleton from "./Skeleton";
 import Button from "./Button";
 
 const UsersList = () => {
-    const [execFecthUsers, isLoadingUsers, loadingUsersError] =
+    const [execFetchUsers, isLoadingUsers, loadingUsersError] =
         useThunk(fetchUsers);
     const [execAdduser, isCreatingUser, creatingUserError] = useThunk(addUser);
 
@@ -15,8 +15,8 @@ const UsersList = () => {
     });
 
     useEffect(() => {
-        execFecthUsers();
-    }, [execFecthUsers]);
+        execFetchUsers();
+    }, [execFetchUsers]);
 
     const handleAddUser = () => {
         execAdduser();
@@ -44,13 +44,10 @@ const UsersList = () => {
         <div>
             <div className="flex flex-row justify-between m-3">
                 <h1 className="m-2 text-xl">Users</h1>
-                {isCreatingUser ? (
-                    "Creating User"
-                ) : creatingUserError ? (
-                    "Error creating user"
-                ) : (
-                    <Button onClick={handleAddUser}>+ Add User</Button>
-                )}
+                <Button loading={isCreatingUser} onClick={handleAddUser}>
+                    + Add User
+                </Button>
+                {creatingUserError && "Error creating user..."}
             </div>
             {renderedUsers}
         </div>
