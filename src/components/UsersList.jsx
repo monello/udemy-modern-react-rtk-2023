@@ -15,14 +15,11 @@ const UsersList = () => {
     });
 
     useEffect(() => {
+        setIsLoadingUsers(true);
         dispatch(fetchUsers())
             .unwrap()
-            .catch((error) =>
-                setoadingUsersError(error);
-            )
-            .finally(() =>
-                setIsLoadingUsers(false);
-            );
+            .catch((error) => setoadingUsersError(error))
+            .finally(() => setIsLoadingUsers(false));
     }, []);
 
     const handleAddUser = () => {
