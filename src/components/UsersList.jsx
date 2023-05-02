@@ -12,7 +12,14 @@ const UsersList = () => {
     });
 
     useEffect(() => {
-        dispatch(fetchUsers());
+        dispatch(fetchUsers())
+            .unwrap()
+            .then(() => {
+                console.log("SUCCESS");
+            })
+            .catch(() => {
+                console.log(`FAILED`);
+            });
     }, []);
 
     const handleAddUser = () => {
