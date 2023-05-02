@@ -29,8 +29,7 @@ const usersSlice = createSlice({
 
         // REMOVE USER CASES
         builder.addCase(removeUser.fulfilled, (state, action) => {
-            // state.isLoading = false;
-            state.data.push(action.payload);
+            state.data = state.data.filter(user => user.id !== action.payload.id);
         });
     }
 });
