@@ -17,21 +17,21 @@ const albumsApi = createApi({
         // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
         // If we want to create an endpoint that will change (mutate) data on our API we create a "bulder.mutate"
         fetchAlbums: builder.query({
-            query: (user) => {
-                return {
-                    // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
-                    method: 'GET',
+            query: (user) => ({
 
-                    // The "url" is the path-part of the url. It get appended to the baseUrl (defined above). So now we have this: fetch.get('http://localhost:3005/albums')
-                    url: '/albums',
+                // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
+                method: 'GET',
 
-                    // The "params" is used to build up the query-string part of the URL. Finally we have: fetch.get('http:/ocalhos:3005/albums?userId=123')
-                    // Id we supply multiple properties in the params object they will be added with "&foo=xxx&bar=yyy" etc
-                    params: {
-                        userId: user.id
-                    }
-                };
-            }
+                // The "url" is the path-part of the url. It get appended to the baseUrl (defined above). So now we have this: fetch.get('http://localhost:3005/albums')
+                url: '/albums',
+
+                // The "params" is used to build up the query-string part of the URL. Finally we have: fetch.get('http:/ocalhos:3005/albums?userId=123')
+                // Id we supply multiple properties in the params object they will be added with "&foo=xxx&bar=yyy" etc
+                params: {
+                    userId: user.id
+                }
+
+            })
         })
 
     })
