@@ -12,7 +12,7 @@ const albumsApi = createApi({
         // For eaxample if our api was at "http://localhost:3005/api/v1" this would be out baseUrl for all other requests
         baseUrl: 'http://localhost:3005'
     }),
-    endpoints(builder) {
+    endpoints: (builder) => {
         return {
             // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
             // If we want to create an endpoint that will change (mutate) data on our API we create a "bulder.mutate"
