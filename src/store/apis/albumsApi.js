@@ -13,12 +13,10 @@ const albumsApi = createApi({
         baseUrl: 'http://localhost:3005'
     }),
     endpoints: (builder) => ({
-
         // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
         // If we want to create an endpoint that will change (mutate) data on our API we create a "bulder.mutate"
         fetchAlbums: builder.query({
             query: ({ id }) => ({
-
                 // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
                 method: 'GET',
 
@@ -30,10 +28,8 @@ const albumsApi = createApi({
                 params: {
                     userId: id
                 }
-
             })
         })
-
     })
 });
 
