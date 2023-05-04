@@ -17,7 +17,7 @@ const albumsApi = createApi({
         // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
         // If we want to create an endpoint that will change (mutate) data on our API we create a "bulder.mutate"
         fetchAlbums: builder.query({
-            query: (user) => ({
+            query: ({ id }) => ({
 
                 // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
                 method: 'GET',
@@ -28,7 +28,7 @@ const albumsApi = createApi({
                 // The "params" is used to build up the query-string part of the URL. Finally we have: fetch.get('http:/ocalhos:3005/albums?userId=123')
                 // Id we supply multiple properties in the params object they will be added with "&foo=xxx&bar=yyy" etc
                 params: {
-                    userId: user.id
+                    userId: id
                 }
 
             })
