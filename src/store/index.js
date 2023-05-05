@@ -1,5 +1,5 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import { setupListerners } from '@reduxjs/toolkit/query';
+import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
 import { usersReducer } from './slices/usersSlice';
 import { albumsApi } from './apis/albumsApi';
 
@@ -16,13 +16,13 @@ export const store = configureStore({
         [albumsApi.reducerPath]: albumsApi.reducer, // this is equivalant to:    albums: albumsApi.reducer
     },
     middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware
+        return getDefaultMiddleware()
             .concat(albumsApi.middleware); // .concat() is used to merge 2 arrays
     }
 });
 
 // This is a one-time setup (after your first RTKQ API)
-setupListerners(store.dispatch);
+setupListeners(store.dispatch);
 
 /**
  * This section contains all our re-exports to we are able to import everything related to our store from this one index.js file.
