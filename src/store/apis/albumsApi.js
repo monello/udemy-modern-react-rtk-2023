@@ -38,3 +38,4 @@ const albumsApi = createApi({
 //  - "FetchAlbums" comes from the "fetchAlbums" endpoint we created above. It starte with an uppercase letter because all hooks in React start with "use"
 //  - "Query" comes from the fact that we spcified we want to craete a "builder.query"
 export const { useFetchAlbumsQuery } = albumsApi;
+export { albumsApi };
