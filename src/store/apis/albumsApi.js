@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { faker } from "@faker-js/faker";
 
 const albumsApi = createApi({
     // "reducerPath" defines the name of this slice when it is added to the main store/state
@@ -29,6 +30,16 @@ const albumsApi = createApi({
                     userId: id
                 }
             })
+        }),
+        addAlbum: builder.mutation({
+            query: ({ id }) => ({
+                method: 'POST',
+                url: '/albums',
+                body: {
+                    userId: id,
+                    title: faker.commerce.productName()
+                }
+            })
         })
     })
 });
@@ -37,5 +48,5 @@ const albumsApi = createApi({
 // The name of the hook id built up from 2 parts of the config we provided above:
 //  - "FetchAlbums" comes from the "fetchAlbums" endpoint we created above. It starte with an uppercase letter because all hooks in React start with "use"
 //  - "Query" comes from the fact that we spcified we want to craete a "builder.query"
-export const { useFetchAlbumsQuery } = albumsApi;
+export const { useFetchAlbumsQuery, useAddAlbumMutation } = albumsApi;
 export { albumsApi };
