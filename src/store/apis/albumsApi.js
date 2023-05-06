@@ -17,7 +17,21 @@ const albumsApi = createApi({
         // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
         // If we want to create an endpoint that will change (mutate) data on our API we create a "bulder.mutate"
         fetchAlbums: builder.query({
-            providesTags: ['fetchAlbums'],
+            // > Tags can be hardcoded string like on the next line
+            // providesTags: ['fetchAlbums'],
+            // > We need our tags to be dynamic and include the user-id (user that owns the albums being fetched)
+            // > Fortunately the tags do not have to be strings, the can be anything, and using an object makes sense
+            // > RTKQ profives a function-style we can use to generate our Tags
+            // > The function gets the following argument automatically
+            // result, error, args
+            // > We are interested in the args, because that would be exactly the same parameter that is being passed to the "query" property below
+            // > we can name these property anything we want so it makes sense to name it either "user" or immediately destrure it as we do in the "query" property
+            // > The underscore is a TS convention to say "we know we are getting these props, but we won't be using them"
+            providesTags: (_result, _error, { id }) => {
+                // return an array with the tag now as an object
+                // {id: id} can be shortened to {id}
+                return [{ type: 'fetchAlbums', id }];
+            },
             query: ({ id }) => ({
                 // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
                 method: 'GET',
@@ -33,7 +47,12 @@ const albumsApi = createApi({
             })
         }),
         addAlbum: builder.mutation({
-            invalidatesTags: ['fetchAlbums'],
+            // See the notes on generating dynamic tags in the "providesTags" enpoint above
+            // invalidatesTags: ['fetchAlbums'],
+            // We need to generate the same dynamic tag here to invalidate it properly
+            invalidatesTags: (_result, _error, { id }) => {
+                return [{ type: 'fetchAlbums', id }];
+            },
             query: ({ id }) => ({
                 method: 'POST',
                 url: '/albums',
