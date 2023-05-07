@@ -77,6 +77,12 @@ const albumsApi = createApi({
                     title: faker.commerce.productName()
                 }
             })
+        }),
+        removeAlbum: builder.mutation({
+            query: ({ id }) => ({
+                method: 'DELETE',
+                url: `/albums/${id}`
+            })
         })
     })
 });
@@ -85,5 +91,9 @@ const albumsApi = createApi({
 // The name of the hook id built up from 2 parts of the config we provided above:
 //  - "FetchAlbums" comes from the "fetchAlbums" endpoint we created above. It starte with an uppercase letter because all hooks in React start with "use"
 //  - "Query" comes from the fact that we spcified we want to craete a "builder.query"
-export const { useFetchAlbumsQuery, useAddAlbumMutation } = albumsApi;
+export const {
+    useFetchAlbumsQuery,
+    useAddAlbumMutation,
+    useRemoveAlbumMutation
+} = albumsApi;
 export { albumsApi };
