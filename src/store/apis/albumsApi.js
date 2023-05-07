@@ -1,6 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { faker } from "@faker-js/faker";
 
+// TODO: REMOVE - DEV ONLY!
+const pause = (duration) => {
+    return new Promise(resolve => {
+        setTimeout(resolve, duration);
+    });
+};
+
 const albumsApi = createApi({
     // "reducerPath" defines the name of this slice when it is added to the main store/state
     reducerPath: 'albums',
@@ -11,7 +18,16 @@ const albumsApi = createApi({
         // "baseUrl" tella the fetch api where our api is running.
         // The is the front-part of the URL that will be on ALL requests in thos createAPI
         // For eaxample if our api was at "http://localhost:3005/api/v1" this would be out baseUrl for all other requests
-        baseUrl: 'http://localhost:3005'
+        baseUrl: 'http://localhost:3005',
+        // This is an example of how you can override the default fetch function when using RTKQ
+        // This is a handye technique if you want to "hook" into the fetch functionality and run some custom actions before or after the fetch function
+        // Note that is will apply to ALL the endpoints listed in this api conofiguration
+        fetchFn: async (...args) => {
+            // TODO REMOVE WHNEN NOT IN DEV MODE ANYMORE
+            await pause(1000);
+            // call the default fetch function
+            return fetch(...args);
+        }
     }),
     endpoints: (builder) => ({
         // If we want to create an endpoint that will only be fetching/reading data from our API, we craete a "builder.query"
