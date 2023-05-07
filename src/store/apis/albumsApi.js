@@ -43,10 +43,20 @@ const albumsApi = createApi({
             // > We are interested in the args, because that would be exactly the same parameter that is being passed to the "query" property below
             // > we can name these property anything we want so it makes sense to name it either "user" or immediately destrure it as we do in the "query" property
             // > The underscore is a TS convention to say "we know we are getting these props, but we won't be using them"
-            providesTags: (_result, _error, { id }) => {
+            providesTags: (result, _error, { id }) => {
                 // return an array with the tag now as an object
                 // {id: id} can be shortened to {id}
-                return [{ type: 'fetchAlbums', id }];
+                // return [{ type: 'fetchAlbums', id }];
+
+                // Below we implement a better tags system so we can return multiple tags and not just a single tag that is tied to a user-id
+                // This is because we also need to invalidate this query when we delete albums that we want to do by album id
+                // 1. Create a unique tag for every album that was fetched by this query
+                const tags = result.map(album => {
+                    return { type: 'tagAlbum', id: album.id };
+                });
+                // 2. Stiil provide a tag by user, but lets pick a better name
+                tags.push({ type: 'tagUserAblums', id });
+                return tags;
             },
             query: ({ id }) => ({
                 // The "method" tell fetch to create a `fetch.get()` request type. It will add the baseUrl as the url to call: fetch.get('http://localhost:3005')
@@ -67,7 +77,7 @@ const albumsApi = createApi({
             // invalidatesTags: ['fetchAlbums'],
             // We need to generate the same dynamic tag here to invalidate it properly
             invalidatesTags: (_result, _error, { id }) => {
-                return [{ type: 'fetchAlbums', id }];
+                return [{ type: 'tagUserAblums', id }];
             },
             query: ({ id }) => ({
                 method: 'POST',
@@ -79,6 +89,11 @@ const albumsApi = createApi({
             })
         }),
         removeAlbum: builder.mutation({
+            invalidatesTags: (_result, _error, album) => {
+                // the following line can be used, because the album object happens to have the userId in it, but what if we were not that lucky?
+                // return [{ type: 'fetchAlbums', id: album.userId }];
+                return [{ type: 'tagAlbum', id: album.id }];
+            },
             query: ({ id }) => ({
                 method: 'DELETE',
                 url: `/albums/${id}`

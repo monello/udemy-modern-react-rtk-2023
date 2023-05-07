@@ -1,16 +1,34 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "Myra"
-        }
-    ],
-    "albums": [
-        {
-            "id": 10,
-            "title": "Hiking Trip",
-            "userId": 1
-        }
-    ],
-    "photos": []
+  "users": [
+    {
+      "id": 1,
+      "name": "Myra"
+    },
+    {
+      "name": "Darrell Wisoky",
+      "id": 2
+    },
+    {
+      "name": "Bernadette Kassulke",
+      "id": 3
+    }
+  ],
+  "albums": [
+    {
+      "id": 10,
+      "title": "Hiking Trip",
+      "userId": 1
+    },
+    {
+      "userId": 2,
+      "title": "Modern Frozen Chips",
+      "id": 11
+    },
+    {
+      "userId": 3,
+      "title": "Small Metal Tuna",
+      "id": 12
+    }
+  ],
+  "photos": []
 }
