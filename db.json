@@ -28,6 +28,21 @@
       "userId": 3,
       "title": "Small Metal Tuna",
       "id": 12
+    },
+    {
+      "userId": 1,
+      "title": "Generic Steel Fish",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "title": "Ergonomic Cotton Keyboard",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Ergonomic Plastic Towels",
+      "id": 15
     }
   ],
   "photos": []
