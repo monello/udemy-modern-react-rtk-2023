@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { usersReducer } from './slices/usersSlice';
 import { albumsApi } from './apis/albumsApi';
+import { photosApi } from './apis/photosApi';
 
 export const store = configureStore({
     reducer: {
@@ -14,10 +15,12 @@ export const store = configureStore({
         // object['propName']  (OR)  object[SomeVariableThatWillReturnThePropname]   <<== this last option is handy if the property name depends on something (is dynamic)
         // > We can use the same "dynamic" property name technique when we create the new property in our state
         [albumsApi.reducerPath]: albumsApi.reducer, // this is equivalant to:    albums: albumsApi.reducer
+        [photosApi.reducerPath]: photosApi.reducer
     },
     middleware: (getDefaultMiddleware) => {
         return getDefaultMiddleware()
-            .concat(albumsApi.middleware); // .concat() is used to merge 2 arrays
+            .concat(albumsApi.middleware) // .concat() is used to merge 2 arrays
+            .concat(photosApi.middleware);
     }
 });
 
@@ -36,3 +39,8 @@ export {
     useAddAlbumMutation,
     useRemoveAlbumMutation
 } from './apis/albumsApi';
+export {
+    useFetchPhotosQuery,
+    useAddPhotoMutation,
+    useRemovePhotoMutation
+} from './apis/photosApi';

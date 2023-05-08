@@ -43,7 +43,28 @@
       "userId": 1,
       "title": "Ergonomic Plastic Towels",
       "id": 15
+    },
+    {
+      "userId": 1,
+      "title": "Rustic Wooden Table",
+      "id": 16
+    },
+    {
+      "userId": 1,
+      "title": "Licensed Frozen Shoes",
+      "id": 17
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 10,
+      "url": "https://loremflickr.com/150/150/abstract?lock=91346",
+      "id": 1
+    },
+    {
+      "albumId": 10,
+      "url": "https://loremflickr.com/150/150/abstract?lock=44696",
+      "id": 2
+    }
+  ]
 }
